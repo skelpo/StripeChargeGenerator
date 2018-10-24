@@ -34,7 +34,17 @@
 	sudo apt-get install libssl-dev
 	```
 	
-3. Create an TLS Certificate
+3. Update Nginx Server Root
+
+	Set the `root` value in the Nginx `server` block to the path that you cloned the repo to:
+	
+	```nginx
+	root /Path/to/project;
+	```
+	
+	You can get this value by running `pwd` in the project's root.
+	
+4. Create an TLS Certificate
 
 	```bash
 	openssl req \
@@ -52,19 +62,19 @@
 	
 	You will need to trust the new certificate on your machine for your browser to accept it. on macOS, you can do this by opening Keychain Access and going to `File > Import items...` (or <kbd>⇧</kbd>+<kbd>⌘</kbd>+<kbd>i</kbd>). Select the `stripe.crt` file that you just created. Right click on the imported certificate and select `Get Info`. In the popup that opens, toggle the `Trust` section and set `When using this certificate` to `Always trust`. When you close the info popup, you will need to enter an admin password for the changes to persist.
 	
-4. Start Nginx Server
+5. Start Nginx Server
 
 	```bash
 	nginx -c $(pwd)/nginx.conf
 	```
 	
-5. Set `STRIPE_KEY` (Optional)
+6. Set `STRIPE_KEY` (Optional)
 
 	In the `main.js` file, there is a `STRIPE_KEY` constant which is your public key for the Stripe API. You can change this from the random test key to your actual key.
 	
-6. Change Form Action (Optional)
+7. Change Form Action (Optional)
 
 	Change the credit card form action if you want to send the information to a differnet location.
 
-7. You're Raedy to Go!
+8. You're Raedy to Go!
 	
