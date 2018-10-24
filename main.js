@@ -4,7 +4,8 @@
 ///
 ////===--------------------===
 
-var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const STRIPE_KEY = 'pk_test_TYooMQauvdEDq54NiTphI7jx';
+var stripe = Stripe(STRIPE_KEY);
 var elements = stripe.elements();
 
 var style = {
