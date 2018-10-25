@@ -1,3 +1,11 @@
+HTMLElement.prototype.addValueForKey = function (value, key) {
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', key);
+  hiddenInput.setAttribute('value', value);
+  this.appendChild(hiddenInput);
+}
+
 ///===--------------------===
 ///
 /// STRIPE CREDIT CARD FORM CONFIGURATION
@@ -50,12 +58,13 @@ form.addEventListener('submit', function(event) {
 function stripeTokenHandler(token) {
     // Insert the token ID into the form so it gets submitted to the server
     var form = document.getElementById('payment-form');
-    var hiddenInput = document.createElement('input');
-    hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'stripeToken');
-    hiddenInput.setAttribute('value', token.id);
-    form.appendChild(hiddenInput);
-  
+
+    form.addValueForKey(token.id, 'stripeToken');
+    form.addValueForKey('USD', 'currency');
+    form.addValueForKey(3000, 'shipping');
+    form.addValueForKey(1500, 'handling');
+    form.addValueForKey(2000, 'insurence');
+
     // Submit the form
     form.submit();
 }
