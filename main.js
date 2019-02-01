@@ -56,15 +56,17 @@ form.addEventListener('submit', function(event) {
 });
 
 function stripeTokenHandler(token) {
-    // Insert the token ID into the form so it gets submitted to the server
-    var form = document.getElementById('payment-form');
+    // // Insert the token ID into the form so it gets submitted to the server
+    // var form = document.getElementById('payment-form');
 
-    form.addValueForKey(token.id, 'stripeToken');
-    form.addValueForKey('USD', 'currency');
-    form.addValueForKey(3000, 'shipping');
-    form.addValueForKey(1500, 'handling');
-    form.addValueForKey(2000, 'insurence');
+    // form.addValueForKey(token.id, 'stripeToken');
+    // form.addValueForKey('USD', 'currency');
+    // form.addValueForKey(3000, 'shipping');
+    // form.addValueForKey(1500, 'handling');
+    // form.addValueForKey(2000, 'insurence');
 
-    // Submit the form
-    form.submit();
+    // // Submit the form
+    // form.submit();
+
+    console.log(token.id);
 }
